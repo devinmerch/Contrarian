@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;  // Use the port provided by Heroku or de
 app.use(bodyParser.json());
 app.use(cors());  // Allow cross-origin requests
 
-// Serve static files (e.g., app.js, CSS) from the root directory
+// Serve static files from the root directory (adjust if necessary)
 app.use(express.static(path.join(__dirname)));
 
 // Route to serve index.html for the root URL
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Route to handle GPT-4o-mini requests
+// Route to handle GPT requests
 app.post('/api/generate', async (req, res) => {
     const { conversation } = req.body;
     try {
