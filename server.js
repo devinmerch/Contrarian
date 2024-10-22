@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();  // To load environment variables
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;  // Use the port provided by Heroku or default to 3000 for local development
 
 // Middleware
 app.use(bodyParser.json());
@@ -39,5 +39,5 @@ app.post('/api/generate', async (req, res) => {
   
 // Start server
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
