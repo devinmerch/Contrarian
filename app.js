@@ -23,6 +23,9 @@ const prompts = {
 let selectedPerspective = '';
 let conversationHistory = [];
 
+const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://desolate-escarpment-44645.herokuapp.com';
+
+
 // Handle chip selection (only one can be active, or deselect if already selected)
 document.querySelectorAll('.chip').forEach(chip => {
   chip.addEventListener('click', function () {
@@ -71,7 +74,7 @@ document.getElementById('submitBtn').addEventListener('click', async function ()
 
   try {
     // Send the conversation to your backend API
-    const response = await fetch('http://localhost:3000/api/generate', {
+    const response = await fetch(`${apiBaseUrl}/api/generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
